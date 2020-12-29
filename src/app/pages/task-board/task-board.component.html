@@ -1,0 +1,8 @@
+<div class="task-track">
+  <h1 class="task-track__header">Task tracking board</h1>
+  <div class="task-track__board">
+    <board-column [items]="todo" [name]="'Todo'" [status]="'todo'"></board-column>
+    <board-column [items]="inProgress" [name]="'In progress'" [status]="'inProgress'"></board-column>
+    <board-column [items]="done" [name]="'Done'" [status]="'done'"></board-column>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div 
+  class="board-column" [id]="name"
+  (dragover)="allowDrop($event)"
+  (drop)="dropItem($event)">
+  <h2 class="board-column__name">{{name || "Column title"}}</h2>
+  <span 
+    *ngIf="status === 'todo'" 
+    (click)="addNewTask()" 
+    class="board-column__add-btn">+</span>
+  <div 
+    *ngFor="let item of items"
+    [id]="item.id" [draggable]="status !== 'done'" (dragstart)="dragItem($event)"
+    (click)="showDetailsPopup(item)"
+    class="board-column__task">
+    {{ item.description }}
+  </div>
+</div>

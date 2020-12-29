@@ -1,0 +1,45 @@
+@import "./variables.scss";
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  height: 34px;
+  padding: 0 20px;
+  border-radius: 2px;
+  font-weight: 500;
+  border: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--primary {
+    background-color: orange;
+    color: #fff;
+
+    &:disabled {
+      background-color: #b2d9c9;
+      box-shadow: 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.2);
+      font-weight: 600;
+      cursor: initial;
+    }
+  }
+  &--has-margin {
+    margin: 0 10px;
+  }
+  &--block {
+    width: 100%;
+  }
+  &--small {
+    min-width: 70px;
+    padding: 0;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+}

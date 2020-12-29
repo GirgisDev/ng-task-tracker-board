@@ -1,0 +1,56 @@
+.task-track {
+  min-height: 100vh;
+  background-image: linear-gradient(to right top, #2a2f66 0%, #78b4ba 100%);
+
+  &__header {
+    margin: 0;
+    padding: 60px 0 0;
+    text-align: center;
+    color: #fff;
+    font-size: 2.5rem;
+  }
+
+  &__board {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0px auto;
+    padding-top: 50px;
+  }
+}
+
+
+/*********************************\
+      task details properties
+\*********************************/
+
+.task-details {
+  position: fixed;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.6);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+.task-details__box {
+  width: 45%;
+  background-color: #fff;
+  padding: 50px 30px 40px;
+  margin: 180px auto;
+  border-radius: 5px;
+  box-shadow: 4px 4px 10px -3px rgba(22, 22, 22, 0.4);
+}
+
+.task-details__header {
+  margin-bottom: 10px;
+}
+.task-details__details {
+  margin-bottom: 40px;
+}
+.task-details__details__pale {
+  color: #454545;
+}
