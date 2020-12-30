@@ -45,20 +45,4 @@
       border-left: 6px solid #2d8c30;
     }
   }
-
-  &__add-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 30px;
-    line-height: 27px;
-    padding: 0 10px;
-    background-color: #435b81;
-    color: #fff;
-    font-size: 1.3rem;
-    font-weight: bold;
-    user-select: none;
-    cursor: pointer;
-    border-radius: 0 5px 0 5px;
-  }
 }
