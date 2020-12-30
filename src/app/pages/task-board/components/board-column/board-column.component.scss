@@ -20,6 +20,7 @@
   }
 
   &__task {
+    flex: 1;
     max-height: 105px;
     padding: 20px;
     margin-bottom: 10px;
@@ -34,7 +35,10 @@
     &--todo {
       border-left: 6px solid #366cb4;
     }
-    &--inProgress {
+    &--in-progress {
+      border-left: 6px solid #ef7e2e;
+    }
+    &--in-review {
       border-left: 6px solid #ef7e2e;
     }
     &--done {

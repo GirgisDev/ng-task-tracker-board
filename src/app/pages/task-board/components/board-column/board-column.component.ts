@@ -39,6 +39,9 @@ export class BoardColumnComponent implements OnInit {
     this.currentTask = { ...task };
     this.showDetails = true;
   }
+  hideDetailsPopup() {
+    this.showDetails = false;
+  }
 
   addNewTask() {
     return false;

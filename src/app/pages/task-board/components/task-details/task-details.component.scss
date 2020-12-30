@@ -1,0 +1,32 @@
+.task-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.6);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+
+  &__box {
+    width: 40%;
+    min-width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    margin: 180px auto;
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px -3px rgba(22, 22, 22, 0.4);
+  }
+  &__header {
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+  &__details {
+    margin-bottom: 40px;
+  }
+  &__details__pale {
+    color: #454545;
+  }
+}

@@ -3,15 +3,22 @@
   (dragover)="allowDrop($event)"
   (drop)="dropItem($event)">
   <h2 class="board-column__name">{{name || "Column title"}}</h2>
-  <span 
-    *ngIf="status === 'todo'" 
-    (click)="addNewTask()" 
-    class="board-column__add-btn">+</span>
   <div 
     *ngFor="let item of items"
+    class="board-column__task"
+    [ngClass]="{
+      'board-column__task--todo': item.status === 'todo',
+      'board-column__task--in-progress': item.status === 'inProgress',
+      'board-column__task--in-review': item.status === 'inReview',
+      'board-column__task--done': item.status === 'done'
+    }"
     [id]="item.id" [draggable]="status !== 'done'" (dragstart)="dragItem($event)"
-    (click)="showDetailsPopup(item)"
-    class="board-column__task">
+    (click)="showDetailsPopup(item)">
     {{ item.description }}
   </div>
 </div>
+
+<task-details 
+  *ngIf="showDetails" 
+  [task]="currentTask"
+  (closeDetails)="hideDetailsPopup()"></task-details>

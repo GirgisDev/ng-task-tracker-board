@@ -1,0 +1,29 @@
+<div class="task-details" (click)="close()">
+  <div class="task-details__box" (click)="$event.stopPropagation()">
+    <h2 class="task-details__header">Task status: {{ task['status'] }}</h2>
+    <div class="task-details__details">
+      Created at: &nbsp;
+      <span class="task-details__details__pale">{{ formatDate(task['createdAt']) }}</span>
+    </div>
+    <div class="form-group">
+      <label class="form-group__label" for="description">Task description</label>
+      <textarea 
+        name="description" 
+        class="form-group__control form-group__control--textarea"
+        id="description" 
+        placeholder="Enter task description here"
+        [value]="task['description']"
+        #taskDescription></textarea>
+    </div>
+    
+    <button 
+      class="btn btn--danger"
+      (click)="false">Delete</button>
+    <button 
+      class="btn btn--primary"
+      (click)="updateTask(taskDescription.value)">Save and close</button>
+    <button 
+      class="btn btn--primary" 
+      (click)="false">Close</button>
+  </div>
+</div>

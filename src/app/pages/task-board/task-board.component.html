@@ -1,8 +1,10 @@
 <div class="task-track">
   <h1 class="task-track__header">Task tracking board</h1>
+  <div (click)="createNewTask()" class="btn btn--primary">Create new</div>
   <div class="task-track__board">
-    <board-column [items]="todo" [name]="'Todo'" [status]="'todo'"></board-column>
-    <board-column [items]="inProgress" [name]="'In progress'" [status]="'inProgress'"></board-column>
-    <board-column [items]="done" [name]="'Done'" [status]="'done'"></board-column>
+    <board-column 
+      *ngFor="let category of tasks" 
+      [items]="category.tasks" [name]="category.name" 
+      [status]="category.id"></board-column>
   </div>
 </div>
