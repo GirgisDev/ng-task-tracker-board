@@ -15,8 +15,8 @@ export class TaskBoardService {
     return firebase.database().ref('tasks');
   }
 
-  updateTaskStatus({ id, status }, cb?) {
-    firebase.database().ref(`tasks/${id}`).update({ status }, error => {
+  updateTaskStatus({ id, updatesObj }, cb?) {
+    firebase.database().ref(`tasks/${id}`).update(updatesObj, error => {
       if (cb) cb(error);
     });
   }
@@ -30,7 +30,9 @@ export class TaskBoardService {
       if (cb) cb(error);
     });
   }
-  removeTask(id) {
-    return firebase.database().ref(`/tasks/${id}`).remove();
+  removeTask(id, cb) {
+    return firebase.database().ref(`/tasks/${id}`).remove(error => {
+      if (cb) cb(error)
+    });
   }
 }

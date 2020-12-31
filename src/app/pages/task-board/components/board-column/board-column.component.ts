@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TaskBoardService } from './../../services/task-board.service';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'board-column',
@@ -7,13 +6,16 @@ import { TaskBoardService } from './../../services/task-board.service';
   styleUrls: ['./board-column.component.scss']
 })
 export class BoardColumnComponent implements OnInit {
-  @Input('allTasks') allTasks = [];
+  @Input('allTasks') allTasks = {};
   @Input('items') items = [];
   @Input('name') name = "";
   @Input('status') status = "";
+  @Output("deletedTask") deletedTask: EventEmitter<any> = new EventEmitter;
+  @Output("updatedTask") updatedTask: EventEmitter<any> = new EventEmitter;
+  @Output("updatedTaskStatus") updatedTaskStatus: EventEmitter<any> = new EventEmitter;
   currentTask = {};
   showDetails = false;
-  constructor(private taskBoardService: TaskBoardService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -28,11 +30,11 @@ export class BoardColumnComponent implements OnInit {
   dropItem(ev) {
     ev.preventDefault();
     let id = ev.dataTransfer.getData("text"),
-      task = this.allTasks.find(task => task.id === id);
-
-    if (task.status === "todo" && status === "done") return;
-
-    this.taskBoardService.updateTaskStatus({ id, status });
+      taskId = Object.keys(this.allTasks).find(taskId => taskId === id),
+      task = this.allTasks[taskId];
+    if (task.status === "todo" && this.status === "done") return;
+    
+    this.updatedTaskStatus.emit({ id, status: this.status, oldStatus: task.status })
   }
 
   showDetailsPopup(task) {
@@ -42,9 +44,13 @@ export class BoardColumnComponent implements OnInit {
   hideDetailsPopup() {
     this.showDetails = false;
   }
-
-  addNewTask() {
-    return false;
+  updateTask(taskInfo) {
+    this.updatedTask.emit(taskInfo);
+    this.showDetails = false;
+  }
+  deleteTask(taskInfo) {
+    this.deletedTask.emit(taskInfo);
+    this.showDetails = false;
   }
 
 }

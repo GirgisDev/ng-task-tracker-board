@@ -29,4 +29,11 @@
   &__details__pale {
     color: #454545;
   }
+  &__actions-group {
+    width: 62%;
+    min-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 }

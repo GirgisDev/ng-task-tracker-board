@@ -4,7 +4,11 @@
   <div class="task-track__board">
     <board-column 
       *ngFor="let category of tasks" 
-      [items]="category.tasks" [name]="category.name" 
-      [status]="category.id"></board-column>
+      [items]="category.tasks" [allTasks]="allTasks" 
+      [name]="category.name" 
+      [status]="category.id"
+      (deletedTask)="deleteTask($event)"
+      (updatedTask)="updateTask($event)"
+      (updatedTaskStatus)="updateTaskStatus($event)"></board-column>
   </div>
 </div>

@@ -7,7 +7,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TaskDetailsComponent implements OnInit {
   @Input("task") task = {};
+  @Output("deletedTask") deletedTask: EventEmitter<any> = new EventEmitter;
   @Output("closeDetails") closeDetails: EventEmitter<any> = new EventEmitter;
+  @Output("updatedTask") updatedTask: EventEmitter<any> = new EventEmitter;
   constructor() { }
 
   ngOnInit(): void {
@@ -19,8 +21,13 @@ export class TaskDetailsComponent implements OnInit {
     return time.substr(0, 5) + time.slice(-2) + ' | ' + d.toLocaleDateString()
   }
 
-  updateTask(desc) {
-    console.log(desc)
+  updateTask(description) {
+    let taskInfo = { id: this.task['id'], status: this.task['status'], description }
+    this.updatedTask.emit(taskInfo);
+  }
+  deleteTask() {
+    let taskInfo = { id: this.task['id'], status: this.task['status'] }
+    this.deletedTask.emit(taskInfo);
   }
 
   close() {

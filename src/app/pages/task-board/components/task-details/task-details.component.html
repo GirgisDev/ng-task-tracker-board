@@ -16,14 +16,16 @@
         #taskDescription></textarea>
     </div>
     
-    <button 
-      class="btn btn--danger"
-      (click)="false">Delete</button>
-    <button 
-      class="btn btn--primary"
-      (click)="updateTask(taskDescription.value)">Save and close</button>
-    <button 
-      class="btn btn--primary" 
-      (click)="false">Close</button>
+    <div class="task-details__actions-group">
+      <button 
+        class="btn btn--danger"
+        (click)="deleteTask()">Delete</button>
+      <button 
+        class="btn btn--primary"
+        (click)="updateTask(taskDescription.value)">Save and close</button>
+      <button 
+        class="btn btn--primary" 
+        (click)="close()">Close</button>
+    </div>
   </div>
 </div>

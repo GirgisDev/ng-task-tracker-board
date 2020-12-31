@@ -7,18 +7,20 @@
     *ngFor="let item of items"
     class="board-column__task"
     [ngClass]="{
-      'board-column__task--todo': item.status === 'todo',
-      'board-column__task--in-progress': item.status === 'inProgress',
-      'board-column__task--in-review': item.status === 'inReview',
-      'board-column__task--done': item.status === 'done'
+      'board-column__task--todo': item?.status === 'todo',
+      'board-column__task--in-progress': item?.status === 'inProgress',
+      'board-column__task--in-review': item?.status === 'inReview',
+      'board-column__task--done': item?.status === 'done'
     }"
-    [id]="item.id" [draggable]="status !== 'done'" (dragstart)="dragItem($event)"
+    [id]="item?.id" [draggable]="status !== 'done'" (dragstart)="dragItem($event)"
     (click)="showDetailsPopup(item)">
-    {{ item.description }}
+    {{ item?.description }}
   </div>
 </div>
 
 <task-details 
   *ngIf="showDetails" 
   [task]="currentTask"
-  (closeDetails)="hideDetailsPopup()"></task-details>
+  (closeDetails)="hideDetailsPopup()"
+  (deletedTask)="deleteTask($event)"
+  (updatedTask)="updateTask($event)"></task-details>
